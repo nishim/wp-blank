@@ -449,4 +449,24 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
     return '<h2>' . $content . '</h2>';
 }
 
+/*------------------------------------*\
+	Custom post types.
+\*------------------------------------*/
+add_action('init', 'create_post_type');
+function create_post_type() {
+    // https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/register_post_type
+    register_post_type('news', [
+        'label' => 'お知らせ',
+        'description' => '',
+        'menu_position' => 5,
+        'public' => true,
+        'exclude_from_search' => true,
+        'has_archive' => true,
+        'supports' => [
+            'title',
+            'editor',
+        ],
+    ]);
+};
+
 ?>
